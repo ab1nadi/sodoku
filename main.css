@@ -1,0 +1,113 @@
+* {
+
+    font-family: Arial;
+}
+
+
+html 
+{
+    height: 100%;
+}
+
+h1 {
+    padding: 0px;
+}
+
+#title
+{
+    font-size: 50px;
+
+}
+
+
+body{
+    background-image: linear-gradient(lightgrey, darkcyan);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+table 
+{
+
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+table td {
+    border: 2px solid lightgrey; 
+  }
+
+
+  [data-col="3"], [data-col="6"] {
+      border-right: 2px solid grey;
+  }
+
+  [data-row="3"] [data-col],   [data-row="6"] [data-col]
+  {
+      border-bottom: 2px solid grey;
+  }
+
+
+  #buttonHolder
+  {
+      margin-right: auto;
+      margin-left:auto;
+      margin-top: 5px;
+      width: 648px;
+      display: flex;
+      justify-content: space-between;
+      padding-right: -8px;
+      
+  }
+
+  .mainButton
+  {
+      height: 50px;
+      padding: 10px;
+      font-size: 18px;
+      margin-right: 5px;
+  }
+
+  .mainButton:focus {
+    outline: 0;
+}
+
+
+.active 
+{
+    background-color: white;
+}
+
+.tdActive
+{
+    background-color: lightgrey;
+}
+
+
+td
+{
+    text-align: center;
+    font-size: 60px;
+    padding: 0px;
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+}
+
+.noteList
+{
+    text-align: center;
+    font-size: 18px;
+    vertical-align: top;
+
+    
+}
+
+.nonChangeable
+{
+    color: darkcyan;
+}
+
