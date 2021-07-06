@@ -1,0 +1,17 @@
+{
+  "name": "sodoku",
+  "version": "1.0.0",
+  "description": "Just a fun little website, that generates sudoku puzzles of any difficulty. To understand how to create such a website I heavily referenced the paper, \"Sudoku Puzzles Generating: from Easy to Evil.\" The paper can be found with this link: http://zhangroup.aporc.org/images/files/Paper_3485.pdf. This paper generally outlines the basic algorithm for creating sudoku puzzles of any difficulty from Easy to Evil, and gives no code.",
+  "main": "main.js",
+  "dependencies": {
+    "webpack": "^5.42.1",
+    "webpack-cli": "^4.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
