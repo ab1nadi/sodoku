@@ -121,7 +121,7 @@
       </table>
 
       <div id="buttonHolder">
-        <button id="note" class="mainButton"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+        <button id="note" class="mainButton">Note Mode</button>
         
         <div>
             <button id="loadGame" class="mainButton">load</button>
@@ -140,6 +140,7 @@
   <script src="main.js"></script>
   <script>
 
+      // data needed for the game
       var noteActive = false;
       var activeCell = null;
       var solution = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
@@ -147,7 +148,6 @@
       var currentBoardNotes = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 
       // upon starting look in cookies and see if a game already exists
-
       if(read_cookie('gameSave') != null)
       {
           var state = read_cookie("gameSave");
@@ -165,6 +165,11 @@
         note.classList.toggle("active");
         noteActive = !noteActive;
         stopProp = true;
+        
+        if(!noteActive)
+        note.innerHTML = "note mode (active)";
+        else 
+        note.innerHTML = "note mode";
 
         evt.stopPropagation();
       });
