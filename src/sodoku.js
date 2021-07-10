@@ -339,7 +339,6 @@ export class puzzleGenerator
     easy()
     {
 
-        console.log(this.gpuzzle)
 
         this.lowerBound = 4;
         this.totalGivens = Math.random() * (49 - 36) + 36;
@@ -379,8 +378,7 @@ export class puzzleGenerator
 
         }
         
-        console.log(this.dugCount)
-        console.log(this.visited)
+
         // assuming we made it this far
         // return the puzzle
         return JSON.parse(JSON.stringify(this.gpuzzle));

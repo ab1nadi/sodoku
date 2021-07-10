@@ -1,21 +1,18 @@
 
       import {puzzleGenerator} from './sodoku'
-      
+            
+
+      // data needed for the game
       var noteActive = false;
       var activeCell = null;
       var solution = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
       var currentBoard = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
       var currentBoardNotes = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 
-      // upon starting look in cookies and see if a game already exists
 
-      if(read_cookie('gameSave') != null)
-      {
-          var state = read_cookie("gameSave");
-          solution = state.solution;
-          currentBoard = state.currentBoard;
-          currentBoardNotes = state.currentBoardNotes;
-      }
+
+      // make the solution viewable from the console
+      window.solution = solution;
 
 
 
@@ -24,8 +21,18 @@
       {
         var note = document.getElementById("note");
         note.classList.toggle("active");
+
+        /// change the content of the button to reflect its mode
+        if(!noteActive)
+        note.innerHTML = "Note Mode (Active)";
+        else 
+        note.innerHTML = "Note Mode";
+
+
         noteActive = !noteActive;
         stopProp = true;
+        
+  
 
         evt.stopPropagation();
       });
@@ -84,6 +91,12 @@
         {
             var note = document.getElementById("note");
             note.classList.toggle("active");
+
+            if(!noteActive)
+            note.innerHTML = "Note Mode (Active)";
+            else 
+            note.innerHTML = "Note Mode";
+
             noteActive = !noteActive;
         }
 
@@ -238,7 +251,6 @@
             }
 
             // something changed so lets save game state
-            saveGameState();
         }
       }
 
@@ -253,7 +265,8 @@
           // set the solution 
           solution = JSON.parse(JSON.stringify(z.solution));
 
-
+       
+          
           if(level == "easy")
             puzzle = z.easy();
           else if(level == "medium")
@@ -264,7 +277,10 @@
              puzzle = z.evil();
 
         // set the board
-        currentBoard = JSON.parse(JSON.stringify(solution));
+        currentBoard = JSON.parse(JSON.stringify(puzzle));
+
+
+
          for(var r = 1; r<10; r++)
             for(var c = 1; c<10; c++)
                 {
@@ -286,17 +302,18 @@
                 }   
 
             // save the game state
-            saveGameState();
       }
 
       function checkifSolved()
       {
         for(var r = 0; r < 9; r++)
-            for(var c = 0; c<9; c++)
-            if(solution[r][c] != currentBoard[r][c])
+        { for(var c = 0; c<9; c++)
+          
+            {
+              if(solution[r][c] != currentBoard[r][c])
                 return;
-        
-         
+            }
+        }
         alert("CONGRATS YOU DID IT")
       }
 
@@ -385,22 +402,8 @@
           }
       }
   
-  
-      function bake_cookie(name, value) {
-            var cookie = name + "=" + JSON.stringify(value);
-            document.cookie = cookie;
-      
-      }
 
-      function read_cookie(name) {
-            var result = document.cookie.match(new RegExp(name + '=([^;]+)'));
-            result && (result = JSON.parse(result[1]));
-            return result;
-        }
 
-        function delete_cookie(name) {
-            document.cookie = [name, '=; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/; domain=.', window.location.host.toString()].join('');
-        }
   
         function populateBoard()
         {
@@ -432,8 +435,3 @@
                 }     
         }
   
-        function saveGameState()
-        {
-            var object = {solution: JSON.parse(JSON.stringify(solution)), currentBoard: JSON.parse(JSON.stringify(currentBoard)), currentBoardNotes: JSON.parse(JSON.stringify(currentBoardNotes))}
-            bake_cookie("gameSave", object);
-        }
