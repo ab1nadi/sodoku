@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title> SODUKU</title>
+  <title>SODOKU/title>
   <meta name="description" content="SODUKU">
   <meta name="author" content="abinadi">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
@@ -17,7 +17,7 @@
 <body>
     <table >
           <center>
-   <div id="title">SODUKU</div> 
+   <div id="title">SODOKU</div> 
    </center>
         <tr data-row="1">
             <td data-col="1"></td>
@@ -137,7 +137,7 @@
  
 
 
-  <script src="main.js"></script>
+  <script src="./dist/main.js"></script>
   <script>
 
       // data needed for the game
@@ -228,6 +228,12 @@
         {
             var note = document.getElementById("note");
             note.classList.toggle("active");
+
+            if(!noteActive)
+            note.innerHTML = "note mode (active)";
+            else 
+            note.innerHTML = "note mode";
+
             noteActive = !noteActive;
         }
 
