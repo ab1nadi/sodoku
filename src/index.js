@@ -30,7 +30,6 @@
 
 
         noteActive = !noteActive;
-        stopProp = true;
         
   
 
