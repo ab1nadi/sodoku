@@ -24,7 +24,6 @@ export class terminalGenerator
 
         }
         sol.solve(this.puzzle);
-        console.log(sol.puzzle)
         return JSON.parse(JSON.stringify(sol.puzzle));
     }
 
@@ -338,7 +337,7 @@ export class puzzleGenerator
 
     easy()
     {
-
+     
 
         this.lowerBound = 4;
         this.totalGivens = Math.random() * (49 - 36) + 36;
@@ -424,8 +423,7 @@ export class puzzleGenerator
 
         }
         
-        console.log(this.dugCount)
-        console.log(this.visited)
+      
         // assuming we made it this far
         // return the puzzle
         return JSON.parse(JSON.stringify(this.gpuzzle));
@@ -441,7 +439,6 @@ export class puzzleGenerator
         while(this.dugCount < (80 - this.totalGivens) && this.visited != 80)
         {
 
-            console.log(c+ " " + r)
             // check if we can even dig this one
             if(this.canBeDug[r][c] == 0)
             {
@@ -515,8 +512,7 @@ export class puzzleGenerator
 
         }
         
-        console.log(this.dugCount)
-        console.log(this.visited)
+ 
         // assuming we made it this far
         // return the puzzle
         return JSON.parse(JSON.stringify(this.gpuzzle));
@@ -533,7 +529,6 @@ export class puzzleGenerator
         while(this.dugCount < (80 - this.totalGivens) && this.visited != 80)
         {
 
-            console.log(c+ " " + r)
             // check if we can even dig this one
             if(this.canBeDug[r][c] == 0)
             {
