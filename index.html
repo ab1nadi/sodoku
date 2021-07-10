@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>SODOKU/title>
+  <title>SODOKU</title>
   <meta name="description" content="SODUKU">
   <meta name="author" content="abinadi">
   <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
@@ -163,13 +163,18 @@
       {
         var note = document.getElementById("note");
         note.classList.toggle("active");
-        noteActive = !noteActive;
-        stopProp = true;
-        
+
+        /// change the content of the button to reflect its mode
         if(!noteActive)
         note.innerHTML = "note mode (active)";
         else 
         note.innerHTML = "note mode";
+
+
+        noteActive = !noteActive;
+        stopProp = true;
+        
+  
 
         evt.stopPropagation();
       });
