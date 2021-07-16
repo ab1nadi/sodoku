@@ -257,6 +257,7 @@
       function loadSoduku(level)
       {
 
+        // grab the puzzle gen module
           var z = new puzzleGenerator();
           var puzzle;
 
@@ -404,6 +405,8 @@
 
 
   
+
+      // here for debugging I guess
         function populateBoard()
         {
             for(var r = 1; r<10; r++)
