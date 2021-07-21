@@ -13,8 +13,9 @@
 
       // make the solution viewable from the console
       window.solution = solution;
-
-
+      
+      // the validity button listner
+      document.getElementById("validity").addEventListener("click", (evt) => checkValidity());
 
       // the note button listener
       document.getElementById("note").addEventListener("click", (evt) =>
@@ -400,6 +401,38 @@
               activeCell.classList.add("tdActive");
 
           }
+      }
+
+      window.checkValidity = checkValidity;
+      // checkValidity 
+      // checks if the current game board has any errors as apposed to the solution
+      function checkValidity()
+      {
+        let cellList = [];
+
+        
+        for(var x = 1; x < 10; x++)
+          for(var y = 1; y<10; y++)
+          {
+            // if this is a cell we haven't edited yet and they dont equal
+            // mark the cell as wrong for a couple seconds
+            if(currentBoard[x-1][y-1] != 0 && currentBoard[x-1][y-1] != solution[x-1][y-1])
+            {
+              let t = getCell(x,y);
+              t.classList.add("markError")
+              cellList.push(t);
+            }
+          }
+
+
+          // in 3 seconds remove the marks
+          setTimeout(function(){ 
+            cellList.forEach(element =>{
+              element.classList.remove("markError");
+            })
+          
+          }, 3000);
+
       }
   
 

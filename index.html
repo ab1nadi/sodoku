@@ -7,7 +7,6 @@
   <title>SODOKU</title>
   <meta name="description" content="SODUKU">
   <meta name="author" content="abinadi">
-  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
 
   <link rel="stylesheet" href="main.css">
 
@@ -15,10 +14,9 @@
 
 </head>
 <body>
+    <div id="title">SODOKU</div> 
+    <div id = "tableHolder">
     <table >
-          <center>
-   <div id="title">SODOKU</div> 
-   </center>
         <tr data-row="1">
             <td data-col="1"></td>
             <td data-col="2"></td>
@@ -119,10 +117,12 @@
             <td data-col="9"></td>
         </tr>
       </table>
-
+    </div>
       <div id="buttonHolder">
+          <div>
+        <button id ="validity" class="mainButton">Check Validity</button>
         <button id="note" class="mainButton">Note Mode</button>
-        
+        </div>
         <div>
             <button id="loadGame" class="mainButton">load</button>
             <select name="level" class = "mainButton"id="level">

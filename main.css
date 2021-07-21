@@ -16,6 +16,8 @@ h1 {
 #title
 {
     font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
 
 }
 
@@ -27,6 +29,14 @@ body{
     padding: 0;
 }
 
+#tableHolder 
+{
+    width: 600px;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 table 
 {
 
@@ -34,6 +44,8 @@ table
     margin-left: auto;
     border-collapse: collapse;
     background: white;
+    width: 100%;
+    height: 100%;
 }
 
 table td {
@@ -55,12 +67,16 @@ table td {
   {
       margin-right: auto;
       margin-left:auto;
-      margin-top: 5px;
-      width: 648px;
+      margin-top: 8px;
+      display: block;
+      width: 600px;
       display: flex;
-      justify-content: space-between;
-      padding-right: -8px;
-      
+      justify-content: space-between;  
+  }
+
+  .mainButton:nth-child(even)
+  {
+      margin-right: 0px;
   }
 
   .mainButton
@@ -90,11 +106,9 @@ table td {
 td
 {
     text-align: center;
-    font-size: 60px;
+    font-size: 50px;
     padding: 0px;
     overflow: hidden;
-    width: 70px;
-    height: 70px;
 }
 
 .noteList
@@ -111,3 +125,9 @@ td
     color: darkcyan;
 }
 
+
+
+.markError
+{
+    background-color: salmon;
+}
