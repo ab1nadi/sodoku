@@ -400,7 +400,7 @@
 
           else if(dir == "right")
           {
-            if(r != 9)
+            if(c != 9)
               {
                 activeCell.classList.remove("tdActive")
                 activeCell = getCell(r,c+1);
