@@ -9,6 +9,8 @@
       var currentBoard = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
       var currentBoardNotes = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
 
+      // starting out things are empty 
+      var empty = true;
 
 
       // make the solution viewable from the console
@@ -79,15 +81,34 @@
                 }
       })
 
-      window.addEventListener("keypress", (evt) =>
+      // prevent arrow keys from scrolling cuz that is stupid
+      window.addEventListener("keydown", function(e) {
+        if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
+    }, false);
+
+
+
+    // for all those other key events
+      window.addEventListener("keydown", (evt) =>
       {
+
+        // we dont want to do anything if the puzzle hasn't been loaded
+        if(empty)
+        return;
+
+
         var key = evt.key; 
+
+        var keyCode = evt.keyCode;
+
 
         if(isFinite(key) && key != "0")
         handleNumberkey(key);
 
         // if they press the i key lets toggle edit mode
-        else if(key == 'e')
+        else if(key == 'e' || evt.shiftKey)
         {
             var note = document.getElementById("note");
             note.classList.toggle("active");
@@ -108,26 +129,26 @@
         down = 40
         */
 
-        else if(key == 'a')
+        else if(key == 'a' || keyCode == 37)
         {
             arrows("left");
         }
-        else if(key == 'w')
+        else if(key == 'w' ||keyCode == 38)
         {
             arrows("up");
         }
-        else if(key == 'd')
+        else if(key == 'd' || keyCode == 39)
         {
             arrows("right");
         }
-        else if(key == 's')
+        else if(key == 's' || keyCode == 40)
         {
             arrows("down");
         }
 
 
         // for back space key
-       else if(key == 'q')
+       else if(key == 'q' || evt.ctrlKey)
           {
             // if there is an active element
             if(activeCell && !activeCell.classList.contains("nonChangeable"))
@@ -150,6 +171,7 @@
       {
         var e = document.getElementById("level");
         var level = e.value;
+        empty = false;
           loadSoduku(level);
       })
 

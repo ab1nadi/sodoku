@@ -3,36 +3,19 @@ Just a fun little website, that generates playable sodoku puzzles from easy to e
 The game is playable at: https://ab1nadi.github.io/sodoku/.
 # Playing the game
    
-<<<<<<< HEAD
-## Movement
-Movement is as easy as using the mouse or using the 'a', 's', 'd', and 'w' keys.
-The square currently being worked on is highlighted.
-
-## Note Mode
-Note mode allows you to make notes on square. You can enter note mode by either pressing 'e' or clicking the note mode
-button with the mouse.
-
-## Clearing a Square 
-To clear the current highlighted square press the 'q' button.
-
-
-## Generating puzzles
-Generating puzzles is kind of self explanitory. Select the difficulty you want from the drop down, then click load. 
-=======
  ## Movement
- Movement is as easy as using the mouse or using the 'a', 's', 'd', and 'w' keys.
+ Movement is as easy as using the mouse, the arrow keys, or using the 'a', 's', 'd', and 'w' keys.
  The square currently being worked on is highlighted.
 
  ## Note Mode
- Note mode allows you to make notes on square. You can enter note mode by either pressing 'e' or clicking the note mode
+ Note mode allows you to make notes on square. You can enter note mode by either pressing 'e', pressing  the 'shift' button, or clicking the note mode
  button with the mouse.
 
  ## Clearing a Square 
- To clear the current highlighted square press the 'q' button.
+ To clear the current highlighted square press the 'q' button or press the 'ctrl' button.
 
 
  ## Generating puzzles
  Generating puzzles is kind of self explanitory. Select the difficulty you want from the drop down, then click load. 
->>>>>>> 70c3ab5778bd991c409f62adccca1d8a2b5f1ed7
 
 
