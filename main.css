@@ -90,6 +90,16 @@ table td {
       margin-right: 5px;
   }
 
+
+  @media only screen and (max-height: 840px)
+   {
+    .mainButton
+    {
+        font-size:15px;
+    }
+  }
+
+
   .mainButton:focus {
     outline: 0;
 }
@@ -111,16 +121,18 @@ td
     text-align: center;
     font-size:calc(25px + 1.5vh);
     padding: 0px;
-    overflow: hidden;
+    width: calc(100%/9);
+    height: calc(100%/9);
+
 }
 
 .noteList
 {
     text-align: center;
-    font-size: 18px;
+    font-size:calc(8px + 0.9vh);
     vertical-align: top;
+    overflow: wrap;
 
-    
 }
 
 .nonChangeable
