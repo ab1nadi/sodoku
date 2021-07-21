@@ -4,11 +4,6 @@
 }
 
 
-html 
-{
-    height: 100%;
-}
-
 h1 {
     padding: 0px;
 }
@@ -24,6 +19,7 @@ h1 {
 
 body{
     background-image: linear-gradient(lightgrey, darkcyan);
+    background-attachment: fixed;
     height: 100%;
     margin: 0;
     padding: 0;
