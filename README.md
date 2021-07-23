@@ -1,4 +1,4 @@
-# Sodoku
+# Sudoku
 Just a fun little website, that generates playable sodoku puzzles from easy to evil. The puzzles are generated utilizing a solver to createa puzzle with a unique solutions, then it digs holes in that solution based on the wanted difficulty . The algorithms I used for digging holes in the puzzle can be viewed here:  http://zhangroup.aporc.org/images/files/Paper_3485.pdf. 
 The game is playable at: https://ab1nadi.github.io/sodoku/.
 # Playing the game
