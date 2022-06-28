@@ -1,3 +1,7 @@
+// Class terminalGenerator
+// this class generates 
+// solved sudoku puzzle
+// or terminal sudoku puzzle
 export class terminalGenerator 
 {
     puzzle = [[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0]];
@@ -24,7 +28,6 @@ export class terminalGenerator
 
         }
         sol.solve(this.puzzle);
-        console.log(sol.puzzle)
         return JSON.parse(JSON.stringify(sol.puzzle));
     }
 
@@ -100,6 +103,9 @@ export class terminalGenerator
 }
 
 
+// class solver
+// solves any given 
+// sudoku puzzle
 export class solver 
 {
     root = null;
@@ -314,6 +320,10 @@ export class solver
 }
 
 
+
+// puzzleGenerator
+// this class generates puzzles
+// for any difficulty wanted
 export class puzzleGenerator
 {  
     // the stuff we have seen
