@@ -1,17 +1,32 @@
 {
-  "name": "sodoku",
-  "version": "1.0.0",
-  "description": "Just a fun little website, that generates sudoku puzzles of any difficulty. To understand how to create such a website I heavily referenced the paper, \"Sudoku Puzzles Generating: from Easy to Evil.\" The paper can be found with this link: http://zhangroup.aporc.org/images/files/Paper_3485.pdf. This paper generally outlines the basic algorithm for creating sudoku puzzles of any difficulty from Easy to Evil, and gives no code.",
-  "main": "main.js",
-  "dependencies": {
-    "webpack": "^5.42.1",
-    "webpack-cli": "^4.7.2"
-  },
-  "devDependencies": {},
+  "name": "sudoku",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@react-hook/window-size": "^3.1.1",
+    "install": "^0.13.0",
+    "npm": "^9.6.2",
+    "react": "^18.2.0",
+    "react-confetti": "^6.1.0",
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-modal": "^3.16.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.3.0",
+    "vite": "^4.1.0"
+  }
 }
