@@ -1,7 +1,6 @@
 import {empty_board} from '../../../../lib/sodoku'
-import { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Board from "./comps/board";
-
 
 
 export default function SudokuBoard(props)
@@ -15,6 +14,8 @@ export default function SudokuBoard(props)
     let [highlighted, setHighlighted] =useState(null);                                      // the current highlighted square
     let [noteMode, setNotMode] = useState(false);                                           // sets note mode
     let [yesNo, setYesNo] = useState(false);                                                // displays the yes no prompt
+
+    let boardRef =  useRef(0);
 
     useEffect(()=>
     {
@@ -67,6 +68,8 @@ export default function SudokuBoard(props)
     // the highlighted square
     var updateHighlighted = (v) =>
     {
+
+
         // if nothing is highlighted or this isn't an editable space
         if(highlighted == null || puzzleStart[highlighted.y][highlighted.x])
             return;
@@ -211,14 +214,16 @@ export default function SudokuBoard(props)
 
 
     return(
-        <div id="sudoku" onBlur={(e)=>{ console.log(e)}} onKeyDown={(e) => keyPress(e)} className=" w-full flex flex-col">
 
+        <div id="sudoku"  className=" w-full flex flex-col">
+            <div className="fixed w-screen h-screen top-0 left-0" onClick={()=>setHighlighted(null)}>
 
+            </div>
             {/* the sudoku board */}
-            <Board errors={errorsFound}   matrix={puzzle} highlighted={highlighted} setCellHighlight={(x,y)=> {clearErrors(); setHighlighted(x,y);}} puzzleStart={puzzleStart}/>
+            <Board errors={errorsFound} onKeyDown={(e) => keyPress(e)} innerRef={boardRef} matrix={puzzle} highlighted={highlighted} setCellHighlight={(x,y)=> {clearErrors(); setHighlighted(x,y);}} puzzleStart={puzzleStart}/>
             
             {/* displays the yes no prompt */}
-            {yesNo ? <YesNoPrompt close={()=> setYesNo(false)} yes={()=> checkValidity()}/> : ""}
+            {yesNo ? <YesNoPrompt close={()=>{setYesNo(false); boardRef.current.focus()}} yes={()=>{checkValidity(); boardRef.current.focus()}}/> : ""}
 
 
             {/* the edit and validity buttons */}
@@ -226,7 +231,7 @@ export default function SudokuBoard(props)
                 <div className="flex flex-col gap-2 w-fit">
                     <div>Difficulty: {props.difficulty}</div>
                     <div className=" flex gap-1 items-center flex-wrap">
-                        <button className={"w-10 h-10 border-black border-2  flex justify-center items-center rounded-sm hover:bg-slate-300 " + (noteMode ? "bg-slate-300" : "  bg-white ")}  onClick={()=> setNotMode(!noteMode)}>&#9998;</button>
+                        <button className={"w-10 h-10 border-black border-2  flex justify-center items-center rounded-sm hover:bg-slate-300 " + (noteMode ? "bg-slate-300" : "  bg-white ")}  onClick={()=>{setNotMode(!noteMode); boardRef.current.focus()}}>&#9998;</button>
                         <button onClick={()=>setYesNo(true)} className="hover:bg-slate-300 bg-white p-2 w-10 h-10 rounded-sm border-black border-2 flex justify-center items-center">&#x2713;</button>
                     </div>
                 </div>
@@ -234,18 +239,18 @@ export default function SudokuBoard(props)
 
                 {/* the number buttons */}
                 <div className=" relative w-80 flex flex-wrap h-fit gap-2 ">
-                    <div onClick={()=>updateHighlighted(1)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">1</div>
-                    <div onClick={()=>updateHighlighted(2)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">2</div>
-                    <div onClick={()=>updateHighlighted(3)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">3</div>
-                    <div onClick={()=>updateHighlighted(4)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">4</div>
-                    <div onClick={()=>updateHighlighted(5)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">5</div>
-                    <div onClick={()=>updateHighlighted(6)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">6</div>
-                    <div onClick={()=>updateHighlighted(7)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">7</div>
-                    <div onClick={()=>updateHighlighted(8)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">8</div>
-                    <div onClick={()=>updateHighlighted(9)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">9</div>
-                    <div onClick={()=>updateHighlighted(0)}className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">X</div>
+                    <div onClick={()=>{updateHighlighted(1)}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">1</div>
+                    <div onClick={()=>{updateHighlighted(2); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">2</div>
+                    <div onClick={()=>{updateHighlighted(3); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">3</div>
+                    <div onClick={()=>{updateHighlighted(4); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">4</div>
+                    <div onClick={()=>{updateHighlighted(5); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">5</div>
+                    <div onClick={()=>{updateHighlighted(6); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">6</div>
+                    <div onClick={()=>{updateHighlighted(7); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">7</div>
+                    <div onClick={()=>{updateHighlighted(8); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">8</div>
+                    <div onClick={()=>{updateHighlighted(9); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">9</div>
+                    <div onClick={()=>{updateHighlighted(0); boardRef.current.focus();}} className="hover:bg-slate-300 rounded-full w-10 h-10 flex justify-center items-center border-2 border-black bg-white">X</div>
                 </div>
-              
+            
             </div>
 
         </div>

@@ -3,7 +3,7 @@ export default function Board(props)
 {
     return(
    
-            <div  onKeyDown={props.onKeyDown} tabIndex="1" onBlur={props.onBlur}  className=" w-full aspect-square bg-white">
+            <div  onKeyDown={props.onKeyDown} tabIndex="1" onBlur={props.onBlur} ref={props.innerRef}  className=" w-full aspect-square bg-white">
                 <div className=" w-full h-full grid grid-rows-[11.11%_11.11%_11.11%_11.11%_11.11%_11.11%_11.11%_11.11%_11.11%]  focus:outline-0 border-2 border-black [&>*:nth-child(3)]:border-b-4 [&>*:nth-child(6)]:border-b-4 ">
                     
                     {/* displays the rows */}
