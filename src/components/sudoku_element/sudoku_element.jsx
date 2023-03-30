@@ -24,7 +24,7 @@ export default function SudokuElement()
     }
 
     return(
-        <div className=" max-w-xl min-w-[450px] relative flex flex-col items-center pl-3 pr-3 gap-10 ">
+        <div className=" max-w-xl min-w-[200px] relative flex flex-col items-center pl-3 pr-3 gap-10 ">
                 
             {openPuzzle ? <button onClick={()=>{setOpenPuzzle(false); setWon(false);}} className="absolute bg-white z-50 left-3 top-5 hover:bg-slate-300 p-2  rounded-sm border-black border-2 ">Back</button> : ""}
             
