@@ -10,7 +10,7 @@ export default function SudokuBoard(props)
     let [puzzle, setPuzzle] = useState(JSON.parse(JSON.stringify(props.puzzle)));           // the current puzzle state
     let [puzzleStart] = useState(JSON.parse(JSON.stringify(props.puzzleStart)));            // the starting puzzle state
     let [errorsFound, setErrorsFound] = useState(JSON.parse(JSON.stringify(empty_board)));  // errors found during check validity
-    let [insertionSet] = useState(new Set());                                               // keeps track of how much was inserted
+    let [insertionSet] = useState(new Set(props.insertionSet));                                               // keeps track of how much was inserted
     let [highlighted, setHighlighted] =useState(null);                                      // the current highlighted square
     let [noteMode, setNotMode] = useState(false);                                           // sets note mode
     let [yesNo, setYesNo] = useState(false);                                                // displays the yes no prompt
@@ -112,7 +112,7 @@ export default function SudokuBoard(props)
 
         // save this incarnation of the bored
         setTimeout(() => {
-            props.save(newPuzzle, puzzleStart, props.solution, props.difficulty);
+            props.save(newPuzzle, puzzleStart, props.solution, props.difficulty, insertionSet);
         }, (0));
 
     }

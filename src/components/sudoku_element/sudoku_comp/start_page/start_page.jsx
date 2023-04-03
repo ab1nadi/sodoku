@@ -18,8 +18,8 @@ export default function StartPage(props)
         setLoading(true);
         gen_puzzle(difficulty).then(({puzzle, puzzleStart, solution}) => 
         {
-            save(puzzle, puzzleStart, solution, difficulty);
-            props.setPuzzle(puzzle, puzzleStart, solution, difficulty);
+            save(puzzle, puzzleStart, solution, difficulty, new Set());
+            props.setPuzzle(puzzle, puzzleStart, solution, difficulty, new Set());
             setLoading(false);
         })
 
@@ -27,9 +27,9 @@ export default function StartPage(props)
 
     let resumeGame = ()=> 
     {
-        let {puzzle, puzzleStart, solution, difficulty} = load();
+        let {puzzle, puzzleStart, solution, difficulty, insertionSet} = load();
 
-        props.setPuzzle(puzzle, puzzleStart, solution, difficulty);
+        props.setPuzzle(puzzle, puzzleStart, solution, difficulty, insertionSet);
     }
 
     return(   

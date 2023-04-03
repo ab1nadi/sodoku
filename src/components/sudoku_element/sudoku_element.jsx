@@ -13,6 +13,7 @@ export default function SudokuElement()
     let [puzzleStart, setPuzzleStart] = useState(null);
     let [solution, setSolution] = useState(null);
     let [difficulty, setDifficulty] = useState(null);
+    let [insertionSet, setInsertionSet] = useState(null);
     let [won, setWon] = useState(false);
 
     // called by sudoku board
@@ -35,9 +36,9 @@ export default function SudokuElement()
             {won ? <Winner/> : ""}
 
             {/* opens the puzzle or the start page. The start page will always be opend first*/}
-            {openPuzzle ? <SudokuBoard save={save} difficulty={difficulty} puzzleStart={puzzleStart} puzzle={puzzle} solution={solution} solutionFound={foundSolution}></SudokuBoard> 
+            {openPuzzle ? <SudokuBoard save={save} insertionSet={insertionSet} difficulty={difficulty} puzzleStart={puzzleStart} puzzle={puzzle} solution={solution} solutionFound={foundSolution}></SudokuBoard> 
                         :
-                          <StartPage setPuzzle={(puzzle,puzzleStart,solution, difficulty)=>{setPuzzle(puzzle); setPuzzleStart(puzzleStart); setSolution(solution); setDifficulty(difficulty); setOpenPuzzle(true)}}/>}
+                          <StartPage setPuzzle={(puzzle,puzzleStart,solution, difficulty, insertionSet)=>{setPuzzle(puzzle); setPuzzleStart(puzzleStart); setSolution(solution); setDifficulty(difficulty); setOpenPuzzle(true); setInsertionSet(insertionSet)}}/>}
         </div>
     )
 }
