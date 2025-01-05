@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { load, save } from "../../../../lib/persistence";
-import { gen_puzzle } from "../../../../lib/sodoku";
+import { gen_puzzle } from "../../../../lib/sudoku";
 import { Oval } from "react-loader-spinner";
 
 
@@ -21,6 +21,7 @@ export default function StartPage(props)
             save(puzzle, puzzleStart, solution, difficulty, new Set());
             props.setPuzzle(puzzle, puzzleStart, solution, difficulty, new Set());
             setLoading(false);
+            console.log(solution)
         })
 
     }

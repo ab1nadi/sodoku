@@ -1,4 +1,4 @@
-import {empty_board} from '../../../../lib/sodoku'
+import {empty_board} from '../../../../lib/sudoku'
 import React, { useState, useEffect, useRef } from "react";
 import Board from "./comps/board";
 
@@ -10,7 +10,7 @@ export default function SudokuBoard(props)
     let [puzzle, setPuzzle] = useState(JSON.parse(JSON.stringify(props.puzzle)));           // the current puzzle state
     let [puzzleStart] = useState(JSON.parse(JSON.stringify(props.puzzleStart)));            // the starting puzzle state
     let [errorsFound, setErrorsFound] = useState(JSON.parse(JSON.stringify(empty_board)));  // errors found during check validity
-    let [insertionSet] = useState(new Set(props.insertionSet));                                               // keeps track of how much was inserted
+    let [insertionSet] = useState(new Set(props.insertionSet));                             // keeps track of how much was inserted
     let [highlighted, setHighlighted] =useState(null);                                      // the current highlighted square
     let [noteMode, setNotMode] = useState(false);                                           // sets note mode
     let [yesNo, setYesNo] = useState(false);                                                // displays the yes no prompt
@@ -38,6 +38,7 @@ export default function SudokuBoard(props)
     {
         let errorsFoundCopy = [... errorsFound];
 
+
         props.solution.forEach((r,y)=>r.forEach((e,x)=>
         {
             if(puzzle[y][x] != 0 && puzzle[y][x] != e)
@@ -51,17 +52,14 @@ export default function SudokuBoard(props)
     // when it is full
     var checkSolved = () =>
     {
-        for(let y = 0; y<props.puzzle.length; y++)
-            for(let x = 0; x<props.puzzle.length; x++)
-            {
-                if(props.solution[y][x] != props.puzzle[y][x])
-                   {
+        for(let y = 0; y<puzzle[0].length; y++)
+            for(let x = 0; x<puzzle[0].length; x++)
+                if(props.solution[x][y] != puzzle[x][y])
                         return;
-                   }
-            }
-
+                    
         // call the solutionFound prop
         props.solutionFound();
+        
     }
 
     // updates the value of 
@@ -111,9 +109,8 @@ export default function SudokuBoard(props)
         setPuzzle(newPuzzle);
 
         // save this incarnation of the bored
-        setTimeout(() => {
-            props.save(newPuzzle, puzzleStart, props.solution, props.difficulty, insertionSet);
-        }, (0));
+        props.save(newPuzzle, puzzleStart, props.solution, props.difficulty, insertionSet);
+        
 
     }
 
